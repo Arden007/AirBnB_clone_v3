@@ -29,7 +29,7 @@ class User(BaseModel, Base):
         """initializes user"""
         super().__init__(*args, **kwargs)
 
-    def __setpwd__(self, key, val):
+    def __setattr__(self, key, val):
         """sets user pasword"""
         if key == "password":
             val = hashlib.md5(val.encode()).hexdigest()
