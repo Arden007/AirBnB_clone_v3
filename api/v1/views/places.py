@@ -73,8 +73,7 @@ def places_search():
     places = []
     amenities = []
     obj = request.get_json()
-
-     
+ 
     for k, v in obj.items():
         if k == 'states':
             for item in v:
@@ -87,19 +86,16 @@ def places_search():
             for item in v:
                 if item not in res:
                     res.append(item)
-
     
     for k, v in obj.items():
         if k == 'amenities':
             for item in v:
                 if item not in res:
                     amenities.append(item)
-
     
     for place in storage.all('Place').values():
         if place.city_id in res:
             places.append(place.id)
-
     
     if places == [] and amenities != []:
         remove = []
